@@ -752,11 +752,11 @@ footer {
     text-decoration: underline;
 }
 
-.subscibtion {
+/*.subscibtion {
     display: flex;
     flex-direction: column;
     border-bottom: rgba(255, 255, 255, 0.2);
-}
+}*/
 
 .subscibtion__text {
     color: #ADA996;

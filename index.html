@@ -320,14 +320,85 @@
                 <a href="github.com">github</a>
               </li>
             </ul>
+
+            <style>
+              .modalwin { 
+                  height: 200px;  
+                  width: 300px;
+                  border: 3px outset white; 
+                  background: #ADA996;
+                  top: 20%; /* отступ сверху */
+                  right: 0;
+                  left: 0;
+                  font-size: 14px; 
+                  margin: 0 auto;
+                  z-index:2; /* поверх всех */ 
+                  display: none;  /* сначала невидим */
+                  position: fixed; /* фиксированное позиционирование, окно стабильно при прокрутке */
+                  padding: 15px;
+                  border: 1px solid #383838;
+              }
+              #shadow { 
+                  position: fixed;
+                  width:100%;
+                  height:100%;
+                  z-index:1; /* поверх всех  кроме окна*/ 
+                  background:#000;
+                  opacity: 0.5; /*прозрачность*/ 
+                  left:0;
+                  top:0;
+              }
+          </style>
+          <script type="text/javascript">
+              function showModalWin() {
+  
+                  var darkLayer = document.createElement('div'); // слой затемнения
+                  darkLayer.id = 'shadow'; // id чтобы подхватить стиль
+                  document.body.appendChild(darkLayer); // включаем затемнение
+  
+                  var modalWin = document.getElementById('popupWin'); // находим наше "окно"
+                  modalWin.style.display = 'block'; // "включаем" его
+  
+                  darkLayer.onclick = function () {  // при клике на слой затемнения все исчезнет
+                      darkLayer.parentNode.removeChild(darkLayer); // удаляем затемнение
+                      modalWin.style.display = 'none'; // делаем окно невидимым
+                      return false;
+                  };
+              }
+          </script>
+
+
+
+           
+           <!---->
             <div class="subscibtion">
-              <p class="subscibtion__text">Subscrive to my weekly newsletter</p>
-              <div class="subscibtion__input-group">
-                <input type="text" class="subscibtion__input">
-                <button class="subscibtion__button">Subscribe</button>
-      </article>
-              </div>
+            <p class="subscibtion__text">Subscrive to my weekly newsletter</p>
+              <div class="subscibtion__input-group">              
+               <input type="text" class="subscibtion__input">
+            
+              <!-- <button class="subscibtion__button">Subscribe</button> -->
+              
+              <form class="">
+                <input type="button" value="Subscribe" onclick="showModalWin()" class="subscibtion__button">
+            </form>
+          </div>           
             </div>
+            </div>
+           
+            <div style="text-align: center" id="popupWin" class="modalwin">
+              <h2> Your email </h2>
+              <form onsubmit="alert('submit!');return false">
+                  <input value="example@mailto">
+                  <input type="submit" value="Submit">
+              </form>
+              <hr>
+              <h2> We're here to help! </h2>
+              <br> <p> Thank you for using </p>
+              <hr>
+          </div>
+         
+         
+          </article>
             <div class="cb">
               <p class="cb__text">
                 ©️ Powered by Vyacheslav. 2022
